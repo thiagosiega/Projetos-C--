@@ -72,6 +72,9 @@ public:
         labelText.setFillColor(color);
         labelText.setPosition(x,y);
     }
+    void setText(const string& text){
+        labelText.setString(text);
+    }
     void draw (sf::RenderWindow& window){
         window.draw(labelText);
     }
@@ -104,6 +107,7 @@ int main() {
     Button button(300, 200, 200, 50, sf::Color::Blue, font, "Click Me");
     Button button2 (500, 400, 400, 50, sf::Color::White, font, "Teste 1");
     Label label(300, 300, "texte de fonte/labelç", font2, sf::Color::Green);
+    Label label2(100, 200, "", font2, sf::Color::Green);
 
     while (window.isOpen()) {
         sf::Event event;
@@ -113,10 +117,11 @@ int main() {
             }
             if (event.type == sf::Event::MouseButtonPressed) {
                 if (button.isMouseOver(window)) {
-                    cout << "Botao clicado" << endl;
+                    //modifica o label
+                    label.setText("Botao 1 clicado");
                 }
                 if (button2.isMouseOver(window)){
-                    cout << "Botao clicado 2" << endl;
+                    label2.setText("Botao 2 clicado");
                 }
             }
         }
@@ -125,6 +130,7 @@ int main() {
         button.draw(window);
         button2.draw(window);
         label.draw(window);
+        label2.draw(window);
         window.display();
     }
 
